@@ -1,0 +1,25 @@
+define
+
+    edge sub relation,
+        relates head,
+        relates tail,
+        has edge_id,
+        has edge_type;
+
+    node sub entity,
+        plays head,
+        plays tail,
+        has name,
+        has supply_info_json;
+    
+    edge_id sub attribute,
+        value long;
+    
+    edge_type sub attribute,
+        value string;
+    
+    name sub attribute,
+        value string;
+    
+    supply_info_json sub attribute,
+        value string;

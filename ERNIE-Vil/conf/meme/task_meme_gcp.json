@@ -1,0 +1,22 @@
+[
+    {
+        "task": "meme",
+        "num_choice": 1,
+        "annotations_jsonpath_train": "/home/ron_zhu/Disk2/hateful_memes/annotations/train.entity.jsonl",
+        "annotations_jsonpath_val": "/home/ron_zhu/Disk2/hateful_memes/annotations/dev_seen.jsonl",
+        "annotations_jsonpath_test": "/home/ron_zhu/Disk2/hateful_memes/annotations/test_unseen.jsonl",
+        "feature_lmdb_path": "/home/ron_zhu/Disk2/hateful_memes/hateful_memes_v2.pt",
+        "gt_feature_lmdb_path": "",
+        "unisex_names_table" : "",
+        "Proprocessor": "PreprocessorBasic",
+        "tokenizer_name" : "FullTokenizer",
+        "fusion_method" : "mul",
+        "dropout_rate" : 0.1,
+        "max_seq_len" : 60,
+        "use_gt_fea" : true,
+        "shufflekeep_across_task": true,
+        "shuffle_every_epoch": true,
+        "task_weight": 1.0,
+        "task_prefix": "meme"
+    }
+]

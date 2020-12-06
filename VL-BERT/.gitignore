@@ -1,0 +1,11 @@
+dataset/**/*
+**/__pycache__/**/*
+model/*
+cache/*
+*.log
+output/*
+*.so
+.vscode/sftp.json
+.vscode/sftp*.json
+data/edge-connect
+data/edge_connect

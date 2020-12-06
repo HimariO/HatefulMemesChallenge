@@ -1,0 +1,12 @@
+output_model_path="/home/ron_zhu/Disk2/ernie/pl_ernie_meme_vcr"
+lr_scheduler="linear_warmup_decay"
+decay_steps="2000;4000"
+lr_decay_ratio=0.1
+num_train_steps=15000
+SAVE_STEPS=500
+WARMUP_STEPS=500
+BATCH_SIZE=8
+VALID_STEPS=2000
+LR_RATE=4e-6
+WEIGHT_DECAY=0.01
+MAX_LEN=80

@@ -1,0 +1,17 @@
+nltk==3.2.4
+numpy
+scipy
+six==1.11.0
+json_lines==0.5.0
+lmdb==0.97
+opencv-python==4.2.0.32
+paddlepaddle-gpu==1.8.3.post97
+torch
+future
+pandas
+loguru
+sklearn
+termcolor
+pytorch-lightning
+ray[tune]
+easydict

@@ -1,0 +1,131 @@
+#    Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#    http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+""" finetuning vison-language task """
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import os
+from random import shuffle
+import sys
+import time
+import datetime
+import argparse
+import multiprocessing
+import json
+import random
+import pickle
+import shutil
+
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import pytorch_lightning as pl
+from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.loggers import TensorBoardLogger
+
+import ray
+from ray import tune
+from ray.tune import CLIReporter
+from ray.tune.schedulers import ASHAScheduler, PopulationBasedTraining
+from ray.tune.integration.pytorch_lightning import (
+    TuneReportCallback,
+    TuneReportCheckpointCallback
+)
+
+from reader.meme_finetuning import MemeDataJointReader, MemeDataReader
+from reader.pl_meme_data import LitHatefulMeme
+from model.pt_ernie_vil import ErnieVilModel, ErnieVilConfig, LitErnieVil
+from utils.args import print_arguments
+from args.finetune_args import parser
+from batching.finetune_batching import prepare_batch_data
+
+from loguru import logger
+from sklearn.metrics import roc_auc_score, accuracy_score
+from easydict import EasyDict as edict
+
+
+args = parser.parse_args()
+
+def main(args):
+    """
+       Main func for downstream tasks
+    """
+    # args = edict(args)
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    
+    with open(args.task_group_json) as f:
+        task_group = json.load(f)
+        print('task: ', task_group)
+    
+    print("finetuning tasks start")
+
+    # pl_ckpt_path = './pl_ernie_checkpoints'
+    pl_ckpt_path = args.checkpoints
+    os.makedirs(pl_ckpt_path, exist_ok=True)
+    pl_ernie_vil = LitErnieVil(
+        args,
+        fusion_dropout=args.fusion_dropout_rate,
+        cls_head='linear',
+    )
+    if args.resume_ckpt:
+        logger.warning(f"REsume model and trainer from: {args.resume_ckpt} !!")
+    else:
+        pl_ernie_vil.load_paddle_weight(args.init_checkpoint)
+
+    if args.do_train:
+        lit_dataset = LitHatefulMeme(
+            task_group,
+            vocab_path=args.vocab_path,
+            batch_size=args.batch_size,
+            epoch=args.epoch,
+            balance_cls=args.balance_cls,
+            random_seed=args.seed
+        )
+        
+        resume_ckpt = args.resume_ckpt
+        checkpoint = ModelCheckpoint(
+            filepath=pl_ckpt_path,
+            save_last=False,
+            save_top_k=-1,
+            monitor='val_auroc_epoch',
+            mode='max',
+            save_weights_only=True,
+        )
+        
+        trainer = pl.Trainer(
+            fast_dev_run=False,
+            accumulate_grad_batches=args.accumulate_grad_batches,
+            val_check_interval=0.5,
+            checkpoint_callback=checkpoint,
+            default_root_dir=pl_ckpt_path,
+            gpus=1,
+            precision=16,
+            max_steps=min(args.num_train_steps, 15000),
+            resume_from_checkpoint=resume_ckpt,
+            num_sanity_val_steps=0,
+            callbacks=[],
+            # logger=adhoc_logger,
+        )
+
+        trainer.fit(pl_ernie_vil, datamodule=lit_dataset)
+
+
+if __name__ == '__main__':
+    with logger.catch(reraise=True):
+        main(args)
+

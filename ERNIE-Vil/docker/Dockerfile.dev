@@ -1,0 +1,42 @@
+FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+RUN apt-get update \
+    && apt-get install -y curl vim \
+    && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    wget \
+    unzip \
+    yasm \
+    pkg-config \
+    libswscale-dev \
+    libtbb2 \
+    libtbb-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    libavformat-dev \
+    libpq-dev \
+    libsm6 libxrender1 libfontconfig1 \
+    ffmpeg \
+    htop \
+    libopenblas-dev \
+    libomp-dev \
+    tmux
+
+RUN apt install -y python3.7 python3-pip python3.7-dev\
+    && unlink /usr/bin/python3 \
+    && ln -s python3.7 /usr/bin/python3
+
+COPY . /ernie-vil
+RUN cd /ernie-vil \
+    && pip3 install -r requirements.txt
+RUN pip install torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+RUN sed -i "1iforce_color_prompt=true" ~/.bashrc
+
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && apt-get install -y apt-transport-https ca-certificates \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
+    && apt-get update \
+    && apt-get install -y google-cloud-sdk
+WORKDIR /ernie-vil

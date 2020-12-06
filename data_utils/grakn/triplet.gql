@@ -1,0 +1,25 @@
+insert $head_node isa node;
+    $head_node has name "[fill_in]";
+    $head_node has supply_info_json "[fill_in]";
+
+insert $tail_node isa node;
+    $tail_node has name "[fill_in]";
+    $tail_node has supply_info_json "[fill_in]";
+
+insert $rel (head: $head_node, tail: $tail_node) isa edge;
+  $rel has edge_id "";
+  $rel has edge_type "";
+
+insert $head_node isa node,
+        has name "{head_name}",
+        has supply_info_json "{head_json}";
+
+insert $tail_node isa node,
+    has name "{tail_name}",
+    has supply_info_json "{tail_json}";
+
+
+match $n isa node, has name $n; get; offset 0; limit 30;
+match $p (head: $h, tail: $t) isa edge, has edge_type $n; get; offset 0; limit 30;
+match $p (head: $h, tail: $t) isa edge, has edge_type $n, has edge_id $i; get; offset 0; limit 30;
+match $n isa node, has name $na; { $fn contains "apple"; }; get; offset 0; limit 30;

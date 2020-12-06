@@ -1,0 +1,51 @@
+{
+  "adv_kl_weight": 1.0,
+  "adv_lr_img": 0.1,
+  "adv_lr_txt": 0.1,
+  "adv_max_norm": 0,
+  "adv_modality": [
+    "text"
+  ],
+  "adv_steps": 3,
+  "adv_training": false,
+  "betas": [
+    0.9,
+    0.98
+  ],
+  "checkpoint": "/storage/uniter-large-0/ckpt/model_step_800.pt",
+  "compressed_db": false,
+  "conf_th": 0.2,
+  "dropout": 0.29020412984500465,
+  "fp16": true,
+  "grad_norm": 0.13895416672246852,
+  "gradient_accumulation_steps": 4,
+  "learning_rate": 7.096258460097195e-05,
+  "lr_mul": 10.0,
+  "max_bb": 100,
+  "max_txt_len": 60,
+  "min_bb": 10,
+  "model_config": "/src/config/uniter-large.json",
+  "n_workers": 4,
+  "norm_type": "l2",
+  "num_bb": 36,
+  "num_train_steps": 2000,
+  "optim": "adamw",
+  "output_dir": "/storage/uniter-large-0",
+  "pin_mem": true,
+  "seed": 42,
+  "test_txt_db": "/txt/nlvr2_test_unseen.entity.db",
+  "train_batch_size": 3072,
+  "train_img_dbs": [
+    "/img/MEME_NPZ/"
+  ],
+  "train_txt_dbs": [
+    "/txt/nlvr2_train_dev_all.entity.db"
+  ],
+  "tune_num_trial": 48,
+  "val_batch_size": 10240,
+  "val_img_db": "/img/MEME_NPZ/",
+  "val_txt_db": "/txt/nlvr2_dev_seen.entity.db",
+  "valid_steps": 200,
+  "warmup_steps": 460.79402784699175,
+  "weight_decay": 0.0021888153529983586
+}

@@ -1,0 +1,52 @@
+{
+    "compressed_db": false,
+    "model_config": "/src/config/uniter-base.json",
+    "checkpoint": "/storage/villa-base-1/ckpt/model_step_1100.pt",
+    "output_dir": "/storage/villa-base-1",
+    "max_txt_len": 60,
+    "conf_th": 0.2,
+    "max_bb": 100,
+    "min_bb": 10,
+    "num_bb": 36,
+    "train_batch_size": 3072,
+    "val_batch_size": 10240,
+    "gradient_accumulation_steps": 3,
+    "learning_rate": 9.111456942762834e-05,
+    "lr_mul": 10.0,
+    "valid_steps": 100,
+    "num_train_steps": 2000,
+    "optim": "adamw",
+    "betas": [
+        0.9,
+        0.98
+    ],
+    "dropout": 0.24601693721977874,
+    "weight_decay": 0.022213437837182916,
+    "grad_norm": 0.3088998648171548,
+    "warmup_steps": 567.1207160171821,
+    "seed": 44,
+    "fp16": true,
+    "n_workers": 4,
+    "pin_mem": true,
+    "adv_training": false,
+    "adv_modality": [
+        "text"
+    ],
+    "adv_lr_txt": 0.1,
+    "adv_lr_img": 0.1,
+    "adv_steps": 3,
+    "norm_type": "l2",
+    "adv_max_norm": 0,
+    "adv_kl_weight": 1.0,
+    "tune_num_trial": 32,
+    "test_txt_db": "/txt/nlvr2_test_unseen.entity.db",
+    "train_img_dbs": [
+        "/img/MEME_NPZ/"
+    ],
+    "train_txt_dbs": [
+        "/txt/nlvr2_train_dev_all.entity.db"
+    ],
+    "val_img_db": "/img/MEME_NPZ/",
+    "val_txt_db": "/txt/nlvr2_dev_seen.entity.db",
+    "rank": 0
+}

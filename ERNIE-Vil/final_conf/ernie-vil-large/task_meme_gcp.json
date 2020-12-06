@@ -1,0 +1,22 @@
+[
+    {
+        "task": "meme",
+        "num_choice": 1,
+        "annotations_jsonpath_train": "/meme_data/train_dev_all.entity.jsonl",
+        "annotations_jsonpath_val": "/meme_data/dev_seen.jsonl",
+        "annotations_jsonpath_test": "/meme_data/test_unseen.jsonl",
+        "feature_lmdb_path": "/meme_data/hateful_memes_v2.pt",
+        "gt_feature_lmdb_path": "",
+        "unisex_names_table" : "",
+        "Proprocessor": "PreprocessorBasic",
+        "tokenizer_name" : "FullTokenizer",
+        "fusion_method" : "mul",
+        "dropout_rate" : 0.24257551491460172,
+        "max_seq_len" : 60,
+        "use_gt_fea" : true,
+        "shufflekeep_across_task": true,
+        "shuffle_every_epoch": true,
+        "task_weight": 1.0,
+        "task_prefix": "meme"
+    }
+]

@@ -1,0 +1,52 @@
+easydict
+jsonlines
+matplotlib
+networkx
+numpy
+opencv-python
+pandas
+Pillow
+protobuf==3.10.0
+# pycocotools
+PyYAML
+requests==2.22.0
+scikit-image
+scipy
+tensorboard
+tensorboardX
+tensorflow_hub
+tensorflow==2.3.0
+tqdm
+urllib3
+boto3
+fire
+loguru
+torch==1.6.0+cu101
+torchvision==0.7.0+cu101
+pandas
+streamlit
+albumentations
+pytorch-lightning==1.0.0
+regex==2019.8.19
+torchelastic
+
+# adapter-transformer stuff
+dataclasses
+filelock
+# tokenizers==0.7.0
+# sentencepiece
+# sacremoses
+# packaging
+transformers
+ray[tune]
+# https://ray-wheels.s3-us-west-2.amazonaws.com/master/28ab797cf51f35222d1ac0e8a4ca8a5f153a9326/ray-1.0.0.dev0-cp36-cp36m-manylinux1_x86_64_intel.whl
+https://ray-wheels.s3-us-west-2.amazonaws.com/master/28ab797cf51f35222d1ac0e8a4ca8a5f153a9326/ray-0.9.0.dev0-cp36-cp36m-manylinux1_x86_64.whl
+google-cloud-vision==1.0.0
+networkx
+spacy
+easyocr
+stanza
+adabelief-pytorch==0.0.5
+sklearn
+wget
+protobuf==3.14.0
