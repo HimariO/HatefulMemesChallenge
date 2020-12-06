@@ -1,0 +1,11 @@
+dataset/**/*
+**/__pycache__/**/*
+model/*
+cache/*
+*.log
+output/*
+*.so
+.vscode
+*.zip
+*.pt
+*.npz
