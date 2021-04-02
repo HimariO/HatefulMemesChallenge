@@ -19,7 +19,7 @@ Some of the memes are compose by multiple image(patch), and offen the meaning of
 
 ## Preprocess Steps
 
-![image patch detection](../doc/data_processing_flow.jpg)
+![image patch detection](../doc/data_processing_flow.png)
 
 Data processing flow is dived into two stage. First stage detecting objects & text and creating clean images. Second stage utilze those infomation to extract more feature from image and integrade the extra feature into original meme annotation.
 

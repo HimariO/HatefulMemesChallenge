@@ -2,7 +2,10 @@
 
 ## Intro
 
-This is the source code of FacebookAI HatefulMemes challenge solution...
+This is the source code of FacebookAI HatefulMemes challenge first place solution. In this comeptetion, we using multiple type of annotation extracted from hateful-memes dataset and feed those data into multi-modal transformers to achieve high accuracy. You can read about the detail of our approch in:
+
+* Paper [Enhance Multimodal Transformer With External Label And In-Domain Pretrain](https://arxiv.org/abs/2012.08290)
+* [Sild of NeurIPS 2020 competition track event](https://docs.google.com/presentation/d/1734v8OvnKyjwAlCQj605UayZEARa63hN3Hvn1ISI4r8/edit?usp=sharing)
 
 ## Dependency
 

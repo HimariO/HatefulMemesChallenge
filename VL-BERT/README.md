@@ -1,8 +1,8 @@
-# VL-BERT
+# Extended VL-BERT
 
-![vl-bert-ext](../doc/VL-BERT-EXT.jpg)
+![vl-bert-ext](../doc/VL-BERT-EXT.png)
 
-This section contained the code needed to train and inference modify version of VL-BERT that will be trained from the pretrained weight provide in [offiical repo](https://github.com/jackroos/VL-BERT).
+This section contained the code required to train and inference modify version of VL-BERT that will be trained from the pretrained weight provide in [offiical repo](https://github.com/jackroos/VL-BERT).
 
 ## Prerequirements
 
