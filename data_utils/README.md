@@ -4,7 +4,7 @@
 
  model                     | source/framework    | usage                     | download link  |
 | ------------------------ |:-------------------|:------------------------- | :------------- |
-| Res2Net Patch Detector | [mmdetection](https://github.com/HimariO/mmediting)/pytorch | extract image patch       | [link](https://drive.google.com/file/d/1fWZzMt8BQjWffeKSqU7PZTpGLR22LMjI/view?usp=sharing) |
+| Res2Net Patch Detector | [mmdetection](https://github.com/HimariO/mmdetection-meme)/pytorch | extract image patch       | [link](https://drive.google.com/file/d/1fWZzMt8BQjWffeKSqU7PZTpGLR22LMjI/view?usp=sharing) |
 | DeepFillV2             | [mmediting](https://github.com/HimariO/mmediting)/pytorch   | remove text from meme image | [link](https://download.openmmlab.com/mmediting/inpainting/deepfillv2/deepfillv2_256x256_8x2_places_20200619-10d15793.pth) |
 | InceptionV2 OID        | [tf-hub](https://tfhub.dev/google/faster_rcnn/openimages_v4/inception_resnet_v2/1)/tensorflow          | extract meme image bbox        | auto download |
 | FairFace Classifier    | [fairface](https://github.com/HimariO/FairFace)/pytorch           | classifiy race of face/head detect by InceptionV2 | link is in the repo |
