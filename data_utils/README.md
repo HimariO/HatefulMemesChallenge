@@ -73,7 +73,7 @@ And you can find out where to put those files  in the following sections.
 #    --> data/hateful_memes/box_annos.race.json
 #    --> data/hateful_memes/split_img_clean
 #    --> data/hateful_memes/split_img_clean_boxes.json
-bash run_all.sh
+bash run_stage_1.sh
 ```
 
 After the first stage your data folder should look like:
